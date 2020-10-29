@@ -40,6 +40,10 @@ Answer you should change LOG level in standalone.xml
 
 ![Realm Diagram](image/realm.png)
 
+<<<<<<< HEAD
+=======
+```
+>>>>>>> 6a286a37c6a51a86b00cabf2d210568a82122ec0
 	graph LR
 	  A1[mgmt-users.properties] --- ManagementRealm[ManagementRealm] 
 	  A2[mgmt-groups.properties] --- ManagementRealm[ManagementRealm]
@@ -51,4 +55,9 @@ Answer you should change LOG level in standalone.xml
 	 https-listener(https-listener:8443) --- |security-realm| ApplicationRealm
 	 http-remoting-connector(http-remoting-connector) --- |security-realm| ApplicationRealm
 	 application-sasl-authentication(application-sasl-authentication) ---  |security-name| ApplicationRealm
+<<<<<<< HEAD
+=======
+
+```
+>>>>>>> 6a286a37c6a51a86b00cabf2d210568a82122ec0
 
