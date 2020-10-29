@@ -38,6 +38,7 @@ graph LR
 ## Q B. I want to know how many realms are there how to configure them ?
 
 **Flow Diagram**
+
 ![Realm Diagram](image/realm.png)
 
 ```
@@ -53,3 +54,4 @@ graph LR
  http-remoting-connector(http-remoting-connector) --- |security-realm| ApplicationRealm
  application-sasl-authentication(application-sasl-authentication) ---  |security-name| ApplicationRealm
 ```
+
