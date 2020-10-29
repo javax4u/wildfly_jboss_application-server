@@ -37,3 +37,19 @@ graph LR
 
 ## Q B. I want to know how many realms are there how to configure them ?
 
+**Flow Diagram**
+![Realm Diagram](image/realm.png)
+
+```
+graph LR
+  A1[mgmt-users.properties] --- ManagementRealm[ManagementRealm] 
+  A2[mgmt-groups.properties] --- ManagementRealm[ManagementRealm]
+  B1[application-users.properties] --- ApplicationRealm[ApplicationRealm] 
+  B2[application-roles.properties] --- ApplicationRealm[ApplicationRealm]
+  B3[application.keystore] --- |SSL| ApplicationRealm[ApplicationRealm]
+  
+ management-http(management-http:9990) --> |http-interface| ManagementRealm
+ https-listener(https-listener:8443) --- |security-realm| ApplicationRealm
+ http-remoting-connector(http-remoting-connector) --- |security-realm| ApplicationRealm
+ application-sasl-authentication(application-sasl-authentication) ---  |security-name| ApplicationRealm
+```
