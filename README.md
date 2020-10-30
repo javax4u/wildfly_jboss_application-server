@@ -3,8 +3,11 @@
 Answer you should change LOG level in standalone.xml
 
 #### subsystem>profile>logging:8.0
+
 [Onine graph editor link](https://mermaid-js.github.io/mermaid-live-editor)
- 
+
+[Mermaid diagram code file ](diagram_mermaid_code.txt)
+  
  **object diagram**
 ![object diagram](image/logger-20201028223112.png)
 
@@ -27,6 +30,7 @@ Answer you should change LOG level in standalone.xml
 ## Q B. I want to know how many realms are there how to configure them ?
 
 **Flow Diagram**
+
 ![Realm Diagram](image/realm.png)
 
 
