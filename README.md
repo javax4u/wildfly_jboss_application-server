@@ -9,14 +9,14 @@ Answer you should change LOG level in standalone.xml
 ![object diagram](image/logger-20201028223112.png)
 
 
-	graph LR		
-		A[root-logger] -.- |DEBUG| B[level]
-		A[root-logger] --- |INFO| B[level]
-		A --> C{handlers}
-		C --> C1[console]
-		C1 -.- |DEBUG| C1X[level]
-		C --> C2[file]
-		C2 --> D[RollingFileAppender]
+	graph LR	
+	A[root-logger] -.- |DEBUG| B[level]
+	A[root-logger] --- |INFO| B[level]
+	A --> C{handlers}
+	C --> C1[console]
+	C1 -.- |DEBUG| C1X[level]
+	C --> C2[file]
+	C2 --> D[RollingFileAppender]
 
 
 **xml screenshot**
