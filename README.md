@@ -38,7 +38,7 @@ Answer you should change LOG level in standalone.xml
 
 **Flow Diagram**
 
-![Realm Diagram](image/realm.png)
+
 
 	graph LR
 	  A1[mgmt-users.properties] --- ManagementRealm[ManagementRealm] 
