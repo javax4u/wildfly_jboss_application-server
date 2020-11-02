@@ -29,6 +29,37 @@ Answer you should change LOG level in standalone.xml
 
 ![Realm Diagram](image/realm.png)
 
+## Q A. How to disable default web-app in wildfly ?
+
+comment out below tag to disable welcome-content.
+
+```html
+ <!-- <location name="/" handler="welcome-content"/>-->
+  
+```
+To replace this page simply deploy your own war with / as its context path.
+To disable it, remove the "welcome-content" handler for location / in the undertow subsystem.
+
+## Q A. How to enable exploded app deployment ?
+
+Search for subsystem > deployment-scanner tag in file once found, the add **auto-deploy-exploded="true"** parameter into it.
+
+	<!-- Adding auto-deploy-exploded=true parameter to enable auto deployment of exploded war,jar or ear files -->
+	<!-- <deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}"/>-->
+	<deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" auto-deploy-exploded="true" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}"/>
+		 
+
+## Q A. How to deploy your app in root context (/) ?
+
+Add jboss-web.xml file beside web.xml file with below content.
+```xml
+	<jboss-web>
+	   <context-root>/</context-root>
+	</jboss-web>
+```
+
+![deployment](image/deployment.png)	
+![jboss-web.xml](image/jboss-web_xml.png)	 
 
 #### Reference
  
