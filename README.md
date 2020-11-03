@@ -61,6 +61,21 @@ Add jboss-web.xml file beside web.xml file with below content.
 ![deployment](image/deployment.png)	
 ![jboss-web.xml](image/jboss-web_xml.png)	 
 
+## Q A. How to deploy your app in root context (/) ?
+
+```xml
+	<!-- commenting below lines to bind it with machine name -->
+	<!-- <inet-address value="${jboss.bind.address:127.0.0.1}"/> -->
+	<inet-address value="${jboss.bind.address:0.0.0.0}"/>
+```
+
+**Before binding to 0.0.0.0**
+![bind_address_127_0_0_1.png](image/bind_address_127_0_0_1.png)
+
+**After binding to 0.0.0.0**
+
+![bind_address_0_0_0_0.png](image/bind_address_0_0_0_0.png)
+
 #### Reference
  
 [Onine graph editor link](https://mermaid-js.github.io/mermaid-live-editor)
