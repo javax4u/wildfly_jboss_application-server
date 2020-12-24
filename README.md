@@ -29,7 +29,7 @@ Answer you should change LOG level in standalone.xml
 
 ![Realm Diagram](image/realm.png)
 
-## Q A. How to disable default web-app in wildfly ?
+## Q C. How to disable default web-app in wildfly ?
 
 comment out below tag to disable welcome-content.
 
@@ -40,7 +40,7 @@ comment out below tag to disable welcome-content.
 To replace this page simply deploy your own war with / as its context path.
 To disable it, remove the "welcome-content" handler for location / in the undertow subsystem.
 
-## Q A. How to enable exploded app deployment ?
+## Q D. How to enable exploded app deployment ?
 
 Search for subsystem > deployment-scanner tag in file once found, the add **auto-deploy-exploded="true"** parameter into it.
 
@@ -49,7 +49,7 @@ Search for subsystem > deployment-scanner tag in file once found, the add **auto
 	<deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" auto-deploy-exploded="true" runtime-failure-causes-rollback="${jboss.deployment.scanner.rollback.on.failure:false}"/>
 		 
 
-## Q A. How to deploy your app in root context (/) ?
+## Q E. How to deploy your app in root context (/) ?
 
 Add jboss-web.xml file beside web.xml file with below content.
 ```xml
@@ -61,7 +61,7 @@ Add jboss-web.xml file beside web.xml file with below content.
 ![deployment](image/deployment.png)	
 ![jboss-web.xml](image/jboss-web_xml.png)	 
 
-## Q A. How to deploy your app in root context (/) ?
+## Q A. How to bind jboss to computer name instead of ip/ how to access jboss server with remote computer name ?
 
 ```xml
 	<!-- commenting below lines to bind it with machine name -->
@@ -76,12 +76,13 @@ Add jboss-web.xml file beside web.xml file with below content.
 
 ![bind_address_0_0_0_0.png](image/bind_address_0_0_0_0.png)
 
-## Q A. How to add custom queue in wildfly ?
+## Q F. How to add custom queue in wildfly ?
 
 Add your queue entry under <server/profile/subsystem xmlns="urn:jboss:domain:messaging-activemq
 
 	<jms-queue name="ExpiryQueue" entries="java:/jms/queue/ExpiryQueue"/>
-## How to redirect from http to https
+	
+## Q G. How to redirect from http to https
 
 	<subsystem xmlns="urn:jboss:domain:undertow:9.0" default-server="default-server" default-virtual-host="default-host" default-servlet-container="default" default-security-domain="other" statistics-enabled="${wildfly.undertow.statistics-enabled:${wildfly.statistics-enabled:false}}">
             <buffer-cache name="default"/>
