@@ -76,6 +76,41 @@ Add jboss-web.xml file beside web.xml file with below content.
 
 ![bind_address_0_0_0_0.png](image/bind_address_0_0_0_0.png)
 
+## Q A. How to add custom queue in wildfly ?
+
+Add your queue entry under <server/profile/subsystem xmlns="urn:jboss:domain:messaging-activemq
+
+	<jms-queue name="ExpiryQueue" entries="java:/jms/queue/ExpiryQueue"/>
+## How to redirect from http to https
+
+	<subsystem xmlns="urn:jboss:domain:undertow:9.0" default-server="default-server" default-virtual-host="default-host" default-servlet-container="default" default-security-domain="other" statistics-enabled="${wildfly.undertow.statistics-enabled:${wildfly.statistics-enabled:false}}">
+            <buffer-cache name="default"/>
+            <server name="default-server">
+                <http-listener name="default" socket-binding="http" record-request-start-time="true" redirect-socket="https" enable-http2="true"/>
+                <https-listener name="https" socket-binding="https" security-realm="ssl-realm" enable-http2="true"/>
+                <host name="default-host" alias="localhost">
+                    <location name="/" handler="welcome-content"/>
+                    <!--<filter-ref name="http-to-https" predicate="equals(%H,http) and equals(%p,443)"/> this line also works-->
+					<filter-ref name="http-to-https" predicate="equals(%{PROTOCOL},http) and equals(%{LOCAL_PORT},80)"/>
+                    <http-invoker security-realm="ApplicationRealm"/>
+                </host>
+            </server>
+            <servlet-container name="default">
+                <jsp-config/>
+                <websockets/>
+            </servlet-container>
+            <handlers>
+                <file name="welcome-content" path="${jboss.home.dir}/standalone/deployments/root.war"/>
+            </handlers>
+            <filters>
+                <!--<rewrite name="http-to-https" target="https://%v:443%U" redirect="true"/> this line also works-->
+				<rewrite name="http-to-https" target="https://%{LOCAL_SERVER_NAME}:443%{REQUEST_URL}" redirect="true"/>
+            </filters>
+    </subsystem>
+		
+
+![http-to-https-redirect.png](image/http-to-https-redirect.png)
+		
 #### Reference
  
 [Onine graph editor link](https://mermaid-js.github.io/mermaid-live-editor)
