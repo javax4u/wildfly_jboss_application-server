@@ -108,9 +108,14 @@ Add your queue entry under <server/profile/subsystem xmlns="urn:jboss:domain:mes
 				<rewrite name="http-to-https" target="https://%{LOCAL_SERVER_NAME}:443%{REQUEST_URL}" redirect="true"/>
             </filters>
     </subsystem>
-		
-
+	
 ![http-to-https-redirect.png](image/http-to-https-redirect.png)
+
+	
+reference links
+https://serverfault.com/questions/969928/wildfly-http-to-https-redirect-on-the-same-port
+https://support.squoring.com/documentation/18.0.1/install_admin_manual/sect_securing_https_redirect.html
+https://undertow.io/undertow-docs/undertow-docs-2.0.0/predicates-attributes-handlers.html
 		
 #### Reference
  
